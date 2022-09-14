@@ -6,7 +6,8 @@ Osaka University
 
 [arXiv](https://arxiv.org/abs/2112.05941) / [Video](https://www.youtube.com/watch?v=YoOiTp9HEY8&t=57s)  
 
-## Overview  | $~$
+## Overview  
+$~$| $~$
 --- | ---
 ![teaser](image/teaser.jpg)  |![policy](image/pipeline_col.jpg)
 
