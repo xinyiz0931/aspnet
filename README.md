@@ -8,14 +8,13 @@ Osaka University
 
 ## Overview  
 
-<style>
-td, th {
-   border: none!important;
-}
-</style>
+<p float="left">
+  <img src="image/teaser.jpg" height="160" />
+  <img src="image/pipeline_col.jpg" height="160" /> 
+</p>
 
- ![teaser](image/teaser.jpg) | ![policy](image/pipeline_col.jpg)
--|-
+ <!-- ![teaser](image/teaser.jpg) | ![policy](image/pipeline_col.jpg)
+-|- -->
 
 Wire harnesses are essential connecting components in manufacturing industry but are challenging to be automated in industrial tasks such as bin picking. They are long, flexible and tend to get entangled when randomly placed in a bin. This makes the robot struggle to pick a single one from the clutter. Besides, modeling wire harnesses is difficult due to the complex structures of combining deformable cables with rigid components, making it unsuitable for training or collecting data in simulation. In this work, instead of directly lifting wire harnesses, we proposed to grasp and extract the target following circle-like trajectories until it is separated from the clutter. We learn a policy from real-world data to infer the optimal action and grasp from visual observation. Our policy enables the robot to perform non-tangle pickings efficiently by maximizing success rates and reducing the execution time. To evaluate our policy, we present a set of real-world experiments on picking wire harnesses. Results show a significant improvement in success rates from 49.2% to 84.6% over the tangle-agnostic bin picking method. We also evaluate the effectiveness of our policy under different clutter scenarios using unseen types of wire harnesses. The proposed method is expected to provide a practical solution for automating manufacturing processes with wire harnesses.
 
