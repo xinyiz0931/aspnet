@@ -8,21 +8,21 @@ Osaka University
 
 ## Overview  
 
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+
  ![teaser](image/teaser.jpg) | ![policy](image/pipeline_col.jpg)
 -|-
 
 Wire harnesses are essential connecting components in manufacturing industry but are challenging to be automated in industrial tasks such as bin picking. They are long, flexible and tend to get entangled when randomly placed in a bin. This makes the robot struggle to pick a single one from the clutter. Besides, modeling wire harnesses is difficult due to the complex structures of combining deformable cables with rigid components, making it unsuitable for training or collecting data in simulation. In this work, instead of directly lifting wire harnesses, we proposed to grasp and extract the target following circle-like trajectories until it is separated from the clutter. We learn a policy from real-world data to infer the optimal action and grasp from visual observation. Our policy enables the robot to perform non-tangle pickings efficiently by maximizing success rates and reducing the execution time. To evaluate our policy, we present a set of real-world experiments on picking wire harnesses. Results show a significant improvement in success rates from 49.2% to 84.6% over the tangle-agnostic bin picking method. We also evaluate the effectiveness of our policy under different clutter scenarios using unseen types of wire harnesses. The proposed method is expected to provide a practical solution for automating manufacturing processes with wire harnesses.
 
-## Contents
-
 This repository contains the codes of training Action Success Prediction (ASP) module. 
 
-- Prerequisites
-- Data Preparation
-- Training
-- Usage
 
-## Prerequisites
+## 1. Prerequisites
 
 We're using a bin picking toolbox containing some necessary functions such as grasp point detection. Please download and install this package. 
 
@@ -40,7 +40,7 @@ git clone https://github.com/xinyiz0931/aspnet.git
 pip install tensorflow-gpu==2.2.0 tensorflow-probability==0.13.0
 ```
 
-## Data Preparation
+## 2. Data Preparation
 
 Download the real-world dataset and trained models using following links. 
 
@@ -56,7 +56,7 @@ Download the real-world dataset and trained models using following links.
     - `3rdModel.h5`
     - `FinalModel.h5`
 
-## Training
+## 3. Training
 
 Use the following commands iteratively to train ASP model with active learning. 
 
@@ -67,7 +67,7 @@ python active_learner.py
 
 Remeber to replace the names of the latest modesl for active learning in both scripts. 
 
-## Usage
+## 4. Usage
 
 To speed up the action inference process, we use a server to pre-load the trained model and a client to directly infer the actions. 
 
