@@ -16,7 +16,7 @@ This repository contains the codes of training Action Success Prediction (ASP) m
 
 ## 1. Prerequisites
 
-We're using a bin picking toolbox containing some necessary functions such as grasp point detection. Please download and install this package. 
+We're using a bin picking toolbox `bpbot: bin-picking-robot` containing some necessary functions such as grasp point detection. Please download and install this package. We've tested our code using Python 3.6, 3.7, 3.8. 
 
 ```
 git clone https://github.com/xinyiz0931/bin-picking-robot.git bpbot

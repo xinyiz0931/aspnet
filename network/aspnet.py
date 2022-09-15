@@ -1,11 +1,6 @@
 import numpy as np
 np.random.seed(123)
 from math import *
-import os
-import matplotlib.pyplot as plt
-import glob
-import cv2
-import time
 
 from sklearn.preprocessing import MinMaxScaler
 import pickle as p

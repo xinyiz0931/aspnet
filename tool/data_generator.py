@@ -1,5 +1,4 @@
 import numpy as np 
-import pandas as pd
 import os
 import sys
 import glob
@@ -7,20 +6,10 @@ import cv2
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.graph_objects as go
+sys.path.insert(0, './')
+from bpbot.utils import *
 
-sys.path.insert(0, '/home/xinyi/Documents/myrobot')
-from utils.image_proc_utils import *
-
-from tensorflow.keras.utils import to_categorical, plot_model
-from PIL import Image
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import BatchNormalization, Conv2D, MaxPooling2D, Flatten, Input, Activation, Dropout, Lambda, Dense, Concatenate
-from tensorflow.keras.optimizers import Adam
-import tensorflow as tf
-
-class PickDataGenerator():
+class ASPDataGenerator():
 
     def __init__(self, data_dir, resized_size, data_num=None):
         self.data_dir = data_dir
@@ -65,7 +54,6 @@ class PickDataGenerator():
                     
         return images, actions, poses, labels
     
-
     def load_negative_data(self,action_num=5):
         data_list = self.parse_dataset()
         images, actions, poses, labels = [],[],[],[]
@@ -91,7 +79,7 @@ class PickDataGenerator():
                     # rotated to get another three images
                     for j in [90,180,270]:
                         roimg = rotate_img(img,j)
-                        ropose = rotate_point(img, pose, j)
+                        ropose = rotate_point(pose, j)
                         images.append(roimg)
                         actions.append(action)
                         poses.append(ropose)
@@ -154,7 +142,7 @@ class PickDataGenerator():
                     # rotated to get another three images
                     for j in [90,180,270]:
                         roimg = rotate_img(img,j)
-                        ropose = rotate_point(img, pose, j)
+                        ropose = rotate_point(pose,j)
                         images.append(roimg)
                         actions.append(action)
                         poses.append(ropose)
@@ -193,7 +181,7 @@ class PickDataGenerator():
                 labels.append(success)
 
                 roimg = rotate_img(img,180)
-                ropose = rotate_point(img, pose, 180)
+                ropose = rotate_point(pose, 180)
                 images.append(roimg)
                 actions.append(action)
                 poses.append(ropose)
@@ -207,7 +195,6 @@ class PickDataGenerator():
                 #     actions.append(action)
                 #     poses.append(ropose)
                 #     labels.append(success)
-                
 
         return images, actions, poses, labels
     
@@ -268,8 +255,8 @@ class PickDataGenerator():
 
 if __name__ == '__main__':
     
-    data_dir = "/home/xinyi/Documents/dataset/labeled_pool"
-    sdg = PickDataGenerator(data_dir, 224)
+    data_dir = "D:\\Dataset\\aspnet_data\\picking_700_resized_reformatted"
+    sdg = ASPDataGenerator(data_dir, 224)
 
     images, actions, poses, labels = sdg.load_positive_data()
     positive_num = len(labels)
@@ -278,28 +265,3 @@ if __name__ == '__main__':
     images, actions, poses, labels = sdg.load_negative_data()
     negative_num = len(labels)
     print(f"Loaded {negative_num} negative samples! ")
-
-    # img = cv2.imread("/home/xinyi/Documents/dataset/picking_700/20210818113336_199_420_6_1.png",0)
-    # img90 = rotate_img(img,90)
-    # img180 = rotate_img(img,180)
-    # img270 = rotate_img(img,270)
-    # cv2.imshow("NoRotation", img)
-    # cv2.imshow("Rotate90", img90)
-    # cv2.imshow("Rotate180", img180)
-    # cv2.imshow("Rotate270", img270)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
-    
-    # train_data,test_data = sdg.split_data([images, actions, poses, labels], num)
-
-    # train_images, train_actions, train_poses, train_labels = train_data
-    # test_images, test_actions, test_poses, test_labels = test_data
-
-    # sdg.draw_data(train_images, train_poses)
-    # train_data, test_data = sdg.data_split([images, actions, poses, labels], num_after)
-
-    # train_images, train_actions, train_poses, train_labels = train_data
-    # test_images, test_actions, test_poses, test_labels = test_data
-
-    # print(np.count_nonzero(train_labels==1))
-    # print(np.count_nonzero(train_labels==0))

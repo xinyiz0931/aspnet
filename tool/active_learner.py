@@ -5,25 +5,16 @@ Author: xinyi
 Date: 20210824
 """
 import sys
-sys.path.insert(0, '/home/xinyi/Documents/myrobot')
-
+sys.path.insert(0, './')
 import os
 import cv2
-import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
 import glob
-import random
 import shutil
-
-import matplotlib.pyplot as plt
-from tensorflow.keras.models import Sequential, Model,load_model
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import to_categorical
 
-from tool.train_helper import *
-from tool.data_generator import PickDataGenerator
-from utils.image_proc_utils import *
+from bpbot.utils import *
 
 class ActiveLearner():
     def __init__(self, pool, unlabeled_pool, labeled_pool, patch_ratio):
@@ -52,7 +43,7 @@ class ActiveLearner():
             
     def select_labeled_data(self):
         """Use our expert knowledge to select the necessary data
-           Just for the first time training
+           Just for the first time training, need human re-check
         """
         # prepare both pools
         self.prepare_pools()
@@ -182,13 +173,18 @@ class ActiveLearner():
                 break
 
 if __name__ == '__main__':
-    pool = '/home/xinyi/Documents/dataset/picking_reformatted/'
-    labeled_pool = '/home/xinyi/Documents/dataset/labeled_pool/'
-    unlabeled_pool = '/home/xinyi/Documents/dataset/unlabeled_pool/'
-    model_path= '/home/xinyi/Documents/myrobot/learning/model/Logi_AL_20210901_131437.h5'
+    data_pool = "" 
+    labeled_pool = "" 
+    unlabeled_pool = ""
+    model_path = "" 
 
-    al = ActiveLearner(pool,unlabeled_pool,labeled_pool,0.4)
+    al = ActiveLearner(data_pool,unlabeled_pool,labeled_pool,0.4)
+
+    # select training data for training initial model
+    # require human to re-check
     al.select_labeled_data()
+
+    # transfer data from unlabeled_pool to labeled_pool for active learning
     # al.validate_data_with_query(model_path)
 
     
