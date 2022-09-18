@@ -255,7 +255,7 @@ class ASPDataGenerator():
 
 if __name__ == '__main__':
     
-    data_dir = "D:\\Dataset\\aspnet_data\\picking_700_resized_reformatted"
+    data_dir = ""
     sdg = ASPDataGenerator(data_dir, 224)
 
     images, actions, poses, labels = sdg.load_positive_data()

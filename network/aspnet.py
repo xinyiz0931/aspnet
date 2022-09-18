@@ -14,9 +14,8 @@ from tensorflow.keras.optimizers import Adam, RMSprop
 from tensorflow.keras.utils import plot_model, to_categorical
 
 class ASPNet(Sequential):
-    def __init__(self, layer_num, input_shape, output_unit):
+    def __init__(self, layer_num, input_shape):
         self.inputs = Input(shape=input_shape)
-        self.output_unit = output_unit
         self.stack_n = int((layer_num - 2) / 6)
 
     def residual_block(self, inputs, channels, strides=(1, 1)):
@@ -54,7 +53,7 @@ class ASPNet(Sequential):
         net = Activation('relu')(net)
         net = AveragePooling2D(8, 8)(net)
         net = Flatten()(net)
-        # net = Dense(self.output_unit, activation='softmax')(net)
+        net = Dense(1024, activation='softmax')(net)
         return net
 
     def create_grasp_net(self, input_dim, regularizer=None):
@@ -67,7 +66,7 @@ class ASPNet(Sequential):
     def create_action_net(self, input_dim, regularizer=None):
         """Creates a simple two-layer MLP with inputs of the given dimension"""
         model = Sequential()
-        model.add(Dense(16, input_dim=input_dim, activation="relu", kernel_regularizer=regularizer))
+        model.add(Dense(14, input_dim=input_dim, activation="relu", kernel_regularizer=regularizer))
         # model.add(Dense(128, input_dim=input_dim, activation="relu", kernel_regularizer=regularizer))
         # model.add(Dense(128, activation="relu", kernel_regularizer=regularizer))
         return model
@@ -87,7 +86,7 @@ class ASPNet(Sequential):
 
 if __name__ == '__main__':
     # get model
-    net= ASPNet(50, (224, 224, 1), 256)
-
+    net= ASPNet(50, (224, 224, 3))
     model = net.build_model()
     model.summary()
+    

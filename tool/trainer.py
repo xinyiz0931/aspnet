@@ -47,7 +47,7 @@ if __name__ == '__main__':
     train_labels = np.array(train_labels, dtype=np.float32)
     val_labels = np.array(val_labels, dtype=np.float32)
 
-    aspnet= ASPNet(50, (224, 224, 1), 1024)
+    aspnet= ASPNet(50, (224, 224, 3))
     model = aspnet.build_model()
     model.summary()
     
