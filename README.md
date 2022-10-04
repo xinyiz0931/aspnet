@@ -64,8 +64,8 @@ Remeber to replace the names of the latest modesl for active learning in both sc
 To speed up the action inference process, we use a server to pre-load the trained model and a client to directly infer the actions. 
 
 ```
-python predictor/predict_server.py
-python predictor/predict_client.py
+python predictor/asp_server.py
+python predictor/asp_client.py
 ```
 
 Additionaly, you can also use our module of Model-free Grasp Detection in by the function `detect_grasp()` in `bpbot/binpicking.py`. This is also included in the `predict_client.py` file. A module implemented in the `bpbot/module_asp` can also be used the same as this repository.   
