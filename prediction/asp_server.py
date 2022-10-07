@@ -95,7 +95,6 @@ class ASPServer(asprpc.ASPServicer):
         pixel_poses[:, 1] *= (224/ch)
         pixel_poses = pixel_poses.astype(int)
 
-
         poses = np.repeat(pixel_poses, 7, axis=0)
         sampled_actions = to_categorical(list(range(7)), 7)
         img = cv2.resize(img,(224,224))
@@ -137,7 +136,7 @@ def serve(model_dir, host = "localhost:50051"):
 
 if __name__ == "__main__":
 
-    serve(model_dir = "",host = "localhost:50051")
+    serve(model_dir = "C:\\Users\\xinyi\\Downloads\\FinalModel.h5",host = "localhost:50051")
           
           
 
