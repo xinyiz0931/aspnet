@@ -40,14 +40,11 @@ if __name__ == "__main__":
     start = timeit.default_timer()
 
     imgpath = "./image/depth0.png"
-    # g = np.array([[4, 5], [6, 7]])
 
     h_params = {"finger_length": 12,
                 "finger_width":  6, 
                 "open_width":    25}
-    # g_params = {"rotation_step": 22.5, 
-    #             "depth_step":    10,
-    #             "hand_depth":    25}
+
     g_params = {"rotation_step": 45, 
                 "depth_step":    25,
                 "hand_depth":    10}
@@ -66,7 +63,8 @@ if __name__ == "__main__":
     aspc = aspclt.ASPClient()
     aspc.set_threshold(0.5)
     g = grasps[:,0:2]
-
+    # g = np.array([[4, 5], [6, 7]])
+    
     # res_p = aspc.predict(imgpath=imgpath, grasps=g)
 
     a, g_idx = aspc.infer(imgpath=imgpath, grasps=g)
