@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     aspc = aspclt.ASPClient()
     aspc.set_threshold(0.5)
-    imgpath = ""
+    imgpath = "./image/depth.png"
     g = np.array([[4, 5], [6, 7]])
 
     h_params = {"finger_length": 12,
