@@ -136,8 +136,4 @@ def serve(model_dir, host = "localhost:50051"):
 
 if __name__ == "__main__":
 
-    serve(model_dir = "C:\\Users\\xinyi\\Downloads\\FinalModel.h5",host = "localhost:50051")
-          
-          
-
-
+    serve(model_dir = "", host = "localhost:50051")
