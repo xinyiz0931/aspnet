@@ -70,11 +70,12 @@ if __name__ == "__main__":
     a, g_idx = aspc.infer(imgpath=imgpath, grasps=g)
     print(f"Action Idx: {a}, Grasp Idx: {g_idx}")
 
+    end = timeit.default_timer()
+    print("Time cost: ", end-start)
+    
     img_grasp = draw_grasp(grasps, imgpath, h_params, top_idx=g_idx)
     import cv2
     cv2.imshow("", img_grasp)
     cv2.waitKey()
     cv2.destroyAllWindows()
     
-    end = timeit.default_timer()
-    print("Time cost: ", end-start)
