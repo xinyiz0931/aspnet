@@ -1,7 +1,8 @@
 # Learning Efficient Policies for Picking Entangled Wire Harnesses: An Approach to Industrial Bin Picking 
 
 [Xinyi Zhang](http://xinyiz0931.github.io), Yukiyasu Domae, [Weiwei Wan](https://wanweiwei07.github.io/) and [Kensuke Harada](https://www.roboticmanipulation.org/members2/kensuke-harada/)      
-Osaka University
+Osaka University      
+IEEE Robotics and Automation Letters (RA-L) 2022
 
 [arXiv](https://arxiv.org/abs/2112.05941) / [Video](https://www.youtube.com/watch?v=YoOiTp9HEY8&t=57s)  
 
